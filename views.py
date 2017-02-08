@@ -37,13 +37,10 @@ def AddInStockBill(request):
         iAmount = request.POST.get('Amount', '')
         iOperator = request.POST.get('Operator', '')
         itemId = request.POST.get('ItemId','')
-        try:
-            obj = InStockBill(InStockBillCode=iCode,InStockDate=iDate,Amount=iAmount,Operator=iOperator)
-            obj.save()
-        except:
-            return HttpResponse("插入到InStockBill失败。 %s" % iCode)
-        #inStockBill.save()
 
+        xfbdebugs = ''
+        xfbdebugs 'iCode:'+iCode+'| iDate:'+iDate
+        return HttpResponse(xfbdebugs)
         return HttpResponse("/success/")
     return render(request,'InStockAdd.html',{'errors':errors})
 def success(request):
