@@ -41,7 +41,7 @@ def AddInStockBill(request):
             obj = InStockBill(InStockBillCode=iCode,InStockDate=iDate,Amount=iAmount,Operator=iOperator)
             obj.save()
         except:
-            return HttpResponse("插入到InStockBill失败。")
+            return HttpResponse("插入到InStockBill失败。 %s" % iCode)
         #inStockBill.save()
 
         return HttpResponse("/success/")
