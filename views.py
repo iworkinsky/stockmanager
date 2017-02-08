@@ -32,15 +32,17 @@ def AddInStockBill(request):
             errors.append('Please enter a Operator.')
     if not errors:
         inStockBill = InStockBill()
-        # inStockBill.InStockBillCode = request.POST.get('InStockBillCode','')
-        # how are you xfbbrache1
-        # 在增加一个branch后提交
-        inStockBill.InStockDate = request.POST.get('InStockDate', '')
-        inStockBill.Amount = request.POST.get('Amount', '')
-        inStockBill.Operator = request.POST.get('Operator', '')
+        iCode = request.POST.get('InStockBillCode','')
+        iDate = request.POST.get('InStockDate', '')
+        iAmount = request.POST.get('Amount', '')
+        iOperator = request.POST.get('Operator', '')
         itemId = request.POST.get('ItemId','')
-        inStockBill.Item = Item.objects.get(ItemId= itemId)
-        inStockBill.save()
+        try:
+            obj = InStockBill(InStockBillCode=iCode,InStockDate=iDate,Amount=iAmount,Operator=iOperator)
+            obj.save()
+        except:
+            return HttpResponse("插入到InStockBill失败。")
+        #inStockBill.save()
 
         return HttpResponse("/success/")
     return render(request,'InStockAdd.html',{'errors':errors})

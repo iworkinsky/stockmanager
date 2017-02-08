@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>你查找的是 {{ query }}</p>
+{%  if items %}
+<p>found {{ items|length }} item {{ items|pluralize }} .</p>
+<ul>
+    {% for item in items %}
+    <li>{{ item.ItemName }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>没有匹配的记录。</p>
+{% endif %}
+</body>
+</html>
