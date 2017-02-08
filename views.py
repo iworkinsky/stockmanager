@@ -33,6 +33,7 @@ def AddInStockBill(request):
     if not errors:
         inStockBill = InStockBill()
         # inStockBill.InStockBillCode = request.POST.get('InStockBillCode','')
+        # how are you xfbbrache1
         inStockBill.InStockDate = request.POST.get('InStockDate', '')
         inStockBill.Amount = request.POST.get('Amount', '')
         inStockBill.Operator = request.POST.get('Operator', '')
