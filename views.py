@@ -39,7 +39,8 @@ def AddInStockBill(request):
         itemId = request.POST.get('ItemId','')
 
         xfbdebugs = ''
-        xfbdebugs 'iCode:'+iCode+'| iDate:'+iDate
+        xfbdebugs = 'iCode:'+iCode+'|<p>  iDate:'+iDate +' <p> | iAmount:'+iAmount \
+             + ' <p> | iOperator:'+iOperator +' |<p> itemId:' +itemId
         return HttpResponse(xfbdebugs)
         return HttpResponse("/success/")
     return render(request,'InStockAdd.html',{'errors':errors})
