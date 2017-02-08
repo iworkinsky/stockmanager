@@ -15,10 +15,10 @@
 {% endif %}
 <form action="/AddInStockBill/" method="post">
     <p>入库单编号：<input type="text" name="InStockBillCode"></p>
-    <p>入库时间：<input type="text" name="InStockDate"></p>
+    <p>入库时间：<input type="date" name="InStockDate"></p>
     <p>操作员：<input type="text" name="Operator"></p>
     <p>物料：<input type="text" name="ItemId"></p>
-    <p>数量：<input type="text" name="Amount"></p>
+    <p>数量：<input type="number" name="Amount"></p>
     <input type="submit" value="Submit">
 </form>
 </body>
