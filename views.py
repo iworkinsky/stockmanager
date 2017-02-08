@@ -1,3 +1,4 @@
+# coding:utf-8
 from django.shortcuts import render
 from django.http import  HttpResponse
 import datetime
@@ -35,8 +36,8 @@ def AddInStockBill(request):
         iCode = request.POST.get('InStockBillCode','')
         iDate = request.POST.get('InStockDate', '')
         iOperator = request.POST.get('Operator', '')
-        itemId = request.POST.get('ItemId', '')
-        iItem = Item.objects.get(ItemId=1)
+        itemName = request.POST.get('ItemName', '')
+        iItem = Item.objects.get(ItemName=itemName) # 注意物料需要使用model对象
 
         iAmount = request.POST.get('Amount', '')
 
@@ -45,17 +46,18 @@ def AddInStockBill(request):
         inStockBill.Operator = iOperator
         inStockBill.Item = iItem
         inStockBill.Amount = iAmount
-
+        """
         try:
           inStockBill.save()
         except:
             return HttpResponse("inStockbill表格保存失败！")
-        """
-        xfbdebugs = ''
-        xfbdebugs = 'iCode:'+iCode+'|<p>  iDate:'+iDate +' <p> | iAmount:'+iAmount \
-             + ' <p> | iOperator:'+iOperator +' |<p> itemId:' +itemId + '<p> Item: '+iItem.ItemName +' ---|---'
+      """
+
+        xfbdebugs = 'iCode:'+iCode+'|<p>  iDate:'+iDate + ' <p> | iAmount: ' + iAmount \
+             + ' <p> | iOperator:'+iOperator + ' |<p> itemName:' + iTtem.ItemName +' ||'
+
         return HttpResponse(xfbdebugs)
-        """
+
         return HttpResponse("/success/")
     return render(request,'InStockAdd.html',{'errors':errors})
 def success(request):
