@@ -1,11 +1,10 @@
 # coding:utf-8
-from django.shortcuts import render,render_to_response
 from django.http import  HttpResponse
-import datetime
-from learn.models import *
-from learn.forms import *
-from django.template import RequestContext
+from django.shortcuts import render,render_to_response
 
+from learn.models import *
+from django.template import RequestContext
+from learn.forms import *
 
 # Create your views here.
 def search_form(request):
