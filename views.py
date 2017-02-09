@@ -1,8 +1,10 @@
 # coding:utf-8
-from django.shortcuts import render
+from django.shortcuts import render,render_to_response
 from django.http import  HttpResponse
 import datetime
 from learn.models import *
+from learn.forms import *
+from django.template import RequestContext
 
 
 # Create your views here.
@@ -62,3 +64,18 @@ def AddInStockBill(request):
     return render(request,'InStockAdd.html',{'errors':errors})
 def success(request):
     return HttpResponse("表单提交成功！")
+
+def AddItem(request):
+    if request.method == 'POST':
+        form = ItemForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            item = Item()
+            item.ItemCode = cd['ItemCode']
+            item.ItemName = cd['ItemName']
+            item.save()
+            return HttpResponse("Item记录增加成功！")
+    else:
+        form = ItemForm()
+    return render_to_response('ItemAdd.html',{'form':form})
+
