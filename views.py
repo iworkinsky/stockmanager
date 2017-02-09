@@ -54,7 +54,7 @@ def AddInStockBill(request):
       """
 
         xfbdebugs = 'iCode:'+iCode+'|<p>  iDate:'+iDate + ' <p> | iAmount: ' + iAmount \
-             + ' <p> | iOperator:'+iOperator + ' |<p> itemName:' + iTtem.ItemName +' ||'
+             + ' <p> | iOperator:'+iOperator + ' |<p> itemName:' + itemName +' ||'
 
         return HttpResponse(xfbdebugs)
 
