@@ -77,5 +77,5 @@ def AddItem(request):
             return HttpResponse("Item记录增加成功！")
     else:
         form = ItemForm()
-    return render_to_response('ItemAdd.html',{'form':form})
+    return render_to_response('ItemAdd.html',{'form':form},context_instance=RequestContext(request))
 
